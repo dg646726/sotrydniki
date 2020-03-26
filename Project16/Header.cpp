@@ -17,7 +17,7 @@ HANDLE color1 = GetStdHandle(STD_OUTPUT_HANDLE);
 
 Sotrydniki* sotrydniki;
 int countSotrydnikiv = 0;
-list<Sotrydniki> list_sotrydnikiv;
+
 void init()
 {
 	ifstream fin;
@@ -31,41 +31,36 @@ void init()
 		int currentString = 0;
 		string data;
 		int data1;
-		Sotrydniki oldNote;
+		Sotrydniki oldInformation;
 		while (!fin.eof()) {
 			currentString++;
-			if (currentString == 1) {
-				getline(fin, data);
+			getline(fin, data);
 
-				oldNote.first_name = data;
+			if (currentString == 1) {
+
+				oldInformation.first_name = data;
 			}
 			else if (currentString == 2) {
-				getline(fin, data);
 
-				oldNote.last_name = data;
+				oldInformation.last_name = data;
 			}
 			else {
-				getline(fin, data);
 
 				data1 = stoi(data);
-				oldNote.age = data1;
-
+				oldInformation.age = data1;
 				currentString = 0;
-				list_sotrydnikiv.push_back(oldNote);
-				oldNote = Sotrydniki();
+				Sotrydniki* temp = new Sotrydniki[countSotrydnikiv + 1];
+				for (int i = 0; i < countSotrydnikiv; i++)
+				{
+					temp[i] = sotrydniki[i];
+				}
+				temp[countSotrydnikiv] = oldInformation;
+				countSotrydnikiv++;
+				sotrydniki = temp;
 
 			}
 		}
-		countSotrydnikiv = list_sotrydnikiv.size();
-		Sotrydniki* temp = new Sotrydniki[countSotrydnikiv];
-		int index_array = 0;
-		for (Sotrydniki item : list_sotrydnikiv)
-		{
-			temp[index_array] = item;
-			index_array++;
-		}
-
-		sotrydniki = temp;
+		
 	}
 }
 

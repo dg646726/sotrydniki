@@ -1,1 +1,5 @@
-﻿  Project16.vcxproj -> D:\Visual Studio\Project16\Debug\Project16.exe
+﻿  Header.cpp
+  Source.cpp
+D:\Visual Studio\Project16\Project16\Source.cpp(18,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода...
+  Project16.vcxproj -> D:\Visual Studio\Project16\Debug\Project16.exe
