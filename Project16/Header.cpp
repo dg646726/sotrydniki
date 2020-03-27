@@ -56,7 +56,13 @@ void init()
 				}
 				temp[countSotrydnikiv] = oldInformation;
 				countSotrydnikiv++;
-				sotrydniki = temp;
+
+				sotrydniki = new Sotrydniki[countSotrydnikiv];
+				for (int i = 0; i < countSotrydnikiv; i++)
+				{
+					sotrydniki[i] = temp[i];
+				}
+				delete[]temp;
 
 			}
 		}
@@ -78,10 +84,14 @@ void add()
 	cin >> temp[countSotrydnikiv].last_name;
 	cout << "Enter age:";
 	cin >> temp[countSotrydnikiv].age;
-
-	delete sotrydniki;
-	sotrydniki = temp;
 	countSotrydnikiv++;
+
+	sotrydniki = new Sotrydniki[countSotrydnikiv];
+	for (int i = 0; i < countSotrydnikiv; i++)
+	{
+		sotrydniki[i] = temp[i];
+	}
+	delete[]temp;
 
 	ENDL;
 	PAUSE;
@@ -226,8 +236,12 @@ void del()
 	}
 
 	countSotrydnikiv--;
-	delete sotrydniki;
-	sotrydniki = temp;
+	sotrydniki = new Sotrydniki[countSotrydnikiv];
+	for (int i = 0; i < countSotrydnikiv; i++)
+	{
+		sotrydniki[i] = temp[i];
+	}
+	delete[]temp;
 	ENDL;
 	PAUSE;
 	CLEAR;
